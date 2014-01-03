@@ -46,4 +46,7 @@ Once you get the byte stream of "RenPrivateMessages", it can be read using the f
   <tr>
     <td>offset + 4</td><td>4 Byte</td><td>int</td><td>Number of Items</td>
   </tr>
+  <tr>
+    <td>--- Repeat for itemCount ---</td><td>---</td><td>---</td><td>---</td>
+  </tr>
 </table>
