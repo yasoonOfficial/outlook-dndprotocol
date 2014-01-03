@@ -12,6 +12,8 @@ In the process of buiding our Outlook addin, we came across this problem, as we 
 
 It turns out, there is. Outlook also provides some formats called "RenPrivateMessages", "RenPrivateLatestMessages" etc. You can view all of that data using [ClipSpy](http://www.codeproject.com/Articles/168/ClipSpy), which we also used to reverse engineere this stuff. You can find an example WPF project in this repository.
 
+Note: This was only tested in Outlook 2013 yet, 2010 will be next.
+
 The Format
 ------------------
 
@@ -20,13 +22,13 @@ Once you get the byte stream of "RenPrivateMessages", it can be read using the f
 
 <table>
   <tr>
-    <th>Byte</th><th>Length</th><th>Type</th><th>Value</th>
+    <th>Byte</th><th>Length in Bytes</th><th>Type</th><th>Value</th>
   </tr>
   <tr>
     <td>0</td><td>4 Bytes</td><td>int (possibly uint)</td><td>FolderId length</td>
   </tr>
   <tr>
-    <td>offset + 4</td><td>Length given by previous value</td><td>binary</td><td>The MAPI ParentFolderId of the item</td>
+    <td>offset + 4 (0+4)</td><td>Length given by previous value</td><td>binary</td><td>The MAPI ParentFolderId of the item</td>
   </tr>
   <tr>
     <td>offset + folderIdLength</td><td>4 Bytes</td><td>int</td><td>StoreId length</td>
@@ -48,5 +50,41 @@ Once you get the byte stream of "RenPrivateMessages", it can be read using the f
   </tr>
   <tr>
     <td>Repeat for itemCount </td><td>---</td><td>---</td><td>---</td>
+  </tr>
+  <tr>
+    <td>lastOffset</td><td>4 Byte</td><td>int</td><td>Represent the MAPI property 0x8014 ("SideEffects" in OlSpy)</td>
+  </tr>
+  <tr>
+    <td>offset + 4</td><td>1 Byte</td><td>byte</td><td>Length of MessageClass</td>
+  </tr>
+  <tr>
+    <td>offset + 1</td><td>Length given by previous value</td><td>ASCII</td><td>The MessageClass (e.g. IPM.Task) of the item</td>
+  </tr>
+  <tr>
+    <td>offset + messageClassLength</td><td>1 Byte</td><td>byte</td><td>Number of Unicode chars of Subject</td>
+  </tr>
+  <tr>
+    <td>offset + 1</td><td>Number of Unicode chars * 2</td><td>Unicode</td><td>The subject of the item</td>
+  </tr>
+  <tr>
+    <td>offset + (chars * 2)</td><td>4 Bytes</td><td>int</td><td>EntryId length</td>
+  </tr>
+  <tr>
+    <td>offset + 4</td><td>Length given by previous value</td><td>binary</td><td>The MAPI EntryId of the item</td>
+  </tr>
+  <tr>
+    <td>offset + entryIdLength</td><td>4 Bytes</td><td>int</td><td>SearchKey length</td>
+  </tr>
+  <tr>
+    <td>offset + 4</td><td>Length given by previous value</td><td>binary</td><td>The MAPI SearchKey of the item</td>
+  </tr>
+  <tr>
+    <td>offset + searchKeyLength</td><td>4 Bytes</td><td>??</td><td>Unknown, seems to be always E0 80 E9 5A</td>
+  </tr>
+  <tr>
+    <td>offset + 4</td><td>24 Bytes</td><td>??</td><td>Unknown, seemingly some flags</td>
+  </tr>
+  <tr>
+    <td>Next item </td><td>---</td><td>---</td><td>---</td>
   </tr>
 </table>
