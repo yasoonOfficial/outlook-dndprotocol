@@ -6,7 +6,7 @@ Introduction
 
 If you want to implement drag and drop support from Microsoft Outlook to your application, there are already some good [resources](http://www.codeproject.com/Articles/28209/Outlook-Drag-and-Drop-in-C) out there.
 
-These only describe how you can get the temporary .msg-File Outlook creates in a temporary folder. If you want information about the original Outlook message (like EntryID, StoreID, etc.), this won't help you.
+These only describe how you can get the temporary .msg-File Outlook creates in a temporary folder. If you want information about the original Outlook message (like EntryID, StoreID, etc.), you can find a solution here!
 
 In the process of buiding our Outlook addin, we came across this problem, as we need to identify the message in Outlook. There are some workarounds using the current Outlook selection, but we thought there might be another way!
 
