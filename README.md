@@ -18,71 +18,71 @@ The Format
 ------------------
 
 It's actually a quite simple format, even though there are some bytes missing, the most interesting stuff is easy to get.
-Once you get the byte stream of "RenPrivateMessages", it can be read using the following parser. Please note that offset means the start-byte of the previous step.
+Once you get the byte stream of "RenPrivateMessages", it can be read using the following parser:
 
 <table>
   <tr>
-    <th>Byte</th><th>Length in Bytes</th><th>Type</th><th>Value</th>
+    <th>Length in Bytes</th><th>Type</th><th>Value</th>
   </tr>
   <tr>
-    <td>0</td><td>4 Bytes</td><td>int (possibly uint)</td><td>FolderId length</td>
+    <td>4 Bytes</td><td>int (possibly uint)</td><td>FolderId length</td>
   </tr>
   <tr>
-    <td>offset + 4 (0+4)</td><td>Length given by previous value</td><td>binary</td><td>The MAPI ParentFolderId of the item</td>
+    <td>Length given by previous value</td><td>binary</td><td>The MAPI ParentFolderId of the item</td>
   </tr>
   <tr>
-    <td>offset + folderIdLength</td><td>4 Bytes</td><td>int</td><td>StoreId length</td>
+    <td>4 Bytes</td><td>int</td><td>StoreId length</td>
   </tr>
   <tr>
-    <td>offset + 4</td><td>Length given by previous value</td><td>binary</td><td>The MAPI StoreId of the item</td>
+    <td>Length given by previous value</td><td>binary</td><td>The MAPI StoreId of the item</td>
   </tr>
   <tr>
-    <td>offset + storeIdLength</td><td>4 Byte</td><td>??</td><td>Unknown</td>
+    <td>4 Byte</td><td>??</td><td>Unknown</td>
   </tr>
   <tr>
-    <td>offset + 4</td><td>4 Byte</td><td>??</td><td>Unknown</td>
+    <td>4 Byte</td><td>??</td><td>Unknown</td>
   </tr>
   <tr>
-    <td>offset + 4</td><td>4 Byte</td><td>??</td><td>Unknown, but seems to be folder dependent</td>
+    <td>4 Byte</td><td>??</td><td>Unknown, but seems to be folder dependent</td>
   </tr>
   <tr>
-    <td>offset + 4</td><td>4 Byte</td><td>int</td><td>Number of Items</td>
+    <td>4 Byte</td><td>int</td><td>Number of Items</td>
   </tr>
   <tr>
-    <td>Repeat for itemCount </td><td>---</td><td>---</td><td>---</td>
+    <td>Loop for itemCount</td><td>---</td><td>---</td>
   </tr>
   <tr>
-    <td>lastOffset</td><td>4 Byte</td><td>int</td><td>Represent the MAPI property 0x8014 ("SideEffects" in OlSpy)</td>
+    <td>4 Byte</td><td>int</td><td>Represent the MAPI property 0x8014 ("SideEffects" in OlSpy)</td>
   </tr>
   <tr>
-    <td>offset + 4</td><td>1 Byte</td><td>byte</td><td>Length of MessageClass</td>
+    <td>1 Byte</td><td>byte</td><td>Length of MessageClass</td>
   </tr>
   <tr>
-    <td>offset + 1</td><td>Length given by previous value</td><td>ASCII</td><td>The MessageClass (e.g. IPM.Task) of the item</td>
+    <td>Length given by previous value</td><td>ASCII</td><td>The MessageClass (e.g. IPM.Task) of the item</td>
   </tr>
   <tr>
-    <td>offset + messageClassLength</td><td>1 Byte</td><td>byte</td><td>Number of Unicode chars of Subject</td>
+    <td>1 Byte</td><td>byte</td><td>Number of Unicode chars of Subject</td>
   </tr>
   <tr>
-    <td>offset + 1</td><td>Number of Unicode chars * 2</td><td>Unicode</td><td>The subject of the item</td>
+    <td>Number of Unicode chars * 2</td><td>Unicode</td><td>The subject of the item</td>
   </tr>
   <tr>
-    <td>offset + (chars * 2)</td><td>4 Bytes</td><td>int</td><td>EntryId length</td>
+    <td>4 Bytes</td><td>int</td><td>EntryId length</td>
   </tr>
   <tr>
-    <td>offset + 4</td><td>Length given by previous value</td><td>binary</td><td>The MAPI EntryId of the item</td>
+    <td>Length given by previous value</td><td>binary</td><td>The MAPI EntryId of the item</td>
   </tr>
   <tr>
-    <td>offset + entryIdLength</td><td>4 Bytes</td><td>int</td><td>SearchKey length</td>
+    <td>4 Bytes</td><td>int</td><td>SearchKey length</td>
   </tr>
   <tr>
-    <td>offset + 4</td><td>Length given by previous value</td><td>binary</td><td>The MAPI SearchKey of the item</td>
+   <td>Length given by previous value</td><td>binary</td><td>The MAPI SearchKey of the item</td>
   </tr>
   <tr>
-    <td>offset + searchKeyLength</td><td>4 Bytes</td><td>??</td><td>Unknown, seems to be always E0 80 E9 5A</td>
+    <td>4 Bytes</td><td>??</td><td>Unknown, seems to be always E0 80 E9 5A</td>
   </tr>
   <tr>
-    <td>offset + 4</td><td>24 Bytes</td><td>??</td><td>Unknown, seemingly some flags</td>
+    <td>24 Bytes</td><td>??</td><td>Unknown, seemingly some flags</td>
   </tr>
   <tr>
     <td>Next item </td><td>---</td><td>---</td><td>---</td>
