@@ -16,16 +16,34 @@ The Format
 ------------------
 
 It's actually a quite simple format, even though there are some bytes missing, the most interesting stuff is easy to get.
-Once you get the byte stream of "RenPrivateMessages", it can be read using the following parser:
+Once you get the byte stream of "RenPrivateMessages", it can be read using the following parser. Please note that offset means the start-byte of the previous step.
 
 <table>
   <tr>
-    <th>Byte</th><th>Length</th><th>Value</th>
+    <th>Byte</th><th>Length</th><th>Type</th><th>Value</th>
   </tr>
   <tr>
-    <td>0</td><td>4 Bytes</td><td>FolderId length</td>
+    <td>0</td><td>4 Bytes</td><td>int (possibly uint)</td><td>FolderId length</td>
   </tr>
   <tr>
-    <td>5</td><td>Length given by previous value</td><td>The MAPI ParentFolderId of the item</td>
+    <td>offset + 4</td><td>Length given by previous value</td><td>binary</td><td>The MAPI ParentFolderId of the item</td>
+  </tr>
+  <tr>
+    <td>offset + folderIdLength</td><td>4 Bytes</td><td>int</td><td>StoreId length</td>
+  </tr>
+  <tr>
+    <td>offset + 4</td><td>Length given by previous value</td><td>binary</td><td>The MAPI StoreId of the item</td>
+  </tr>
+  <tr>
+    <td>offset + storeIdLength</td><td>4 Byte</td><td>??</td><td>Unknown</td>
+  </tr>
+  <tr>
+    <td>offset + 4</td><td>4 Byte</td><td>??</td><td>Unknown</td>
+  </tr>
+  <tr>
+    <td>offset + 4</td><td>4 Byte</td><td>??</td><td>Unknown, but seems to be folder dependent</td>
+  </tr>
+  <tr>
+    <td>offset + 4</td><td>4 Byte</td><td>int</td><td>Number of Items</td>
   </tr>
 </table>
