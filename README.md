@@ -8,7 +8,7 @@ If you want to implement drag and drop support from Microsoft Outlook to your ap
 
 These only describe how you can get the temporary .msg-File Outlook creates in a temporary folder. If you want information about the original Outlook message (like EntryID, StoreID, etc.), you can find a solution here!
 
-In the process of buiding our Outlook addin, we came across this problem, as we need to identify the message in Outlook. There are some workarounds using the current Outlook selection, but we thought there might be another way!
+In the process of building our Outlook addin, we came across this problem, as we need to identify the message in Outlook. There are some workarounds using the current Outlook selection, but we thought there might be another way!
 
 It turns out, there is. Outlook also provides some formats called "RenPrivateMessages", "RenPrivateLatestMessages" etc. You can view all of that data using [ClipSpy](http://www.codeproject.com/Articles/168/ClipSpy), which we also used to reverse engineere this stuff. You can find an example WPF project in this repository.
 
