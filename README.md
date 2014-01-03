@@ -85,6 +85,6 @@ Once you get the byte stream of "RenPrivateMessages", it can be read using the f
     <td>24 Bytes</td><td>??</td><td>Unknown, seemingly some flags</td>
   </tr>
   <tr>
-    <td>Next item </td><td>---</td><td>---</td><td>---</td>
+    <td>Next item </td><td>---</td><td>---</td>
   </tr>
 </table>
