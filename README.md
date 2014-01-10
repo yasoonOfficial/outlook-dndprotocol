@@ -12,6 +12,8 @@ In the process of building our Outlook addin, we came across this problem, as we
 
 It turns out, there is. Outlook also provides some formats called "RenPrivateMessages", "RenPrivateLatestMessages" etc. You can view all of that data using [ClipSpy](http://www.codeproject.com/Articles/168/ClipSpy), which we also used to reverse engineere this stuff. You can find an example WPF project in this repository.
 
+![ClipSpy](https://s3-eu-west-1.amazonaws.com/w3cacheblog/clipspy.jpg)
+
 Note: This was only tested in Outlook 2013 yet, 2010 will be next.
 
 The Format
