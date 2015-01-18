@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookDndWpf", "OutlookDndWpf.csproj", "{D65C27EE-413E-4664-8335-4A0890F8EF1D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OutlookDndWinForms", "..\OutlookDndWinForms\OutlookDndWinForms.csproj", "{07B22A80-412F-424C-8D21-DF58E6EA3041}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +17,10 @@ Global
 		{D65C27EE-413E-4664-8335-4A0890F8EF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D65C27EE-413E-4664-8335-4A0890F8EF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D65C27EE-413E-4664-8335-4A0890F8EF1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07B22A80-412F-424C-8D21-DF58E6EA3041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07B22A80-412F-424C-8D21-DF58E6EA3041}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07B22A80-412F-424C-8D21-DF58E6EA3041}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07B22A80-412F-424C-8D21-DF58E6EA3041}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
