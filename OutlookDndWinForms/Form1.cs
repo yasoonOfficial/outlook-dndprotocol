@@ -20,7 +20,6 @@ namespace OutlookDndWinForms
         public Form1()
         {
             InitializeComponent();
-            panel1.Show();
         }
 
         public IOleDropTarget GetDropTarget()
@@ -72,9 +71,6 @@ namespace OutlookDndWinForms
             public int OleDrop(object pDataObj, int grfKeyState, long pt, ref int pdwEffect)
             {
                 Trace.WriteLine("OleDrop");
-                var comFormObj = pDataObj as IDataObject;
-                var comObj = pDataObj as System.Runtime.InteropServices.ComTypes.IDataObject;
-
                 System.Windows.DataObject data = new System.Windows.DataObject(pDataObj);
 
                 OnDragDrop(data);
