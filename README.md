@@ -84,7 +84,7 @@ Once you get the byte stream of "RenPrivateMessages", it can be read using the f
     <td>4 Bytes</td><td>??</td><td>Unknown, seems to be always E0 80 E9 5A</td>
   </tr>
   <tr>
-    <td>Outlook 2013: 24 Bytes<br />Outlook 2010: 20 bytes<br />Outlook 2007: 16 bytes</td>
+    <td>Outlook 2016/Office 365: 32 Bytes(not sure why or when this changed)<br />Outlook 2013: 24 Bytes<br />Outlook 2010: 20 bytes<br />Outlook 2007: 16 bytes</td>
     <td>??</td>
     <td>Apparently all 0-bytes, but the 5th:<br />O2013: 5th byte is 0x08 or 0x09<br />O2010: 5th byte is 0x18 or 0x08<br />O2007: 5th byte is always 0x01</td>
   </tr>
